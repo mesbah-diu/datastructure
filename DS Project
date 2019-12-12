@@ -34,9 +34,6 @@ void DlListcreation()
     int i;
     char chr;
     struct node *newnode;
-
-    if(3 >= 1)
-    {
         stnode = (struct node *)malloc(sizeof(struct node));
 
         if(stnode != NULL)
@@ -74,7 +71,7 @@ void DlListcreation()
         {
             printf(" Memory can not be allocated.");
         }
-    }
+
 }
 
 void DlLinsertNodeAtEnd(char chr)
