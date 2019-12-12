@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    char ch;
+    struct node * preptr;
+    struct node * nextptr;
+}*stnode, *ennode;
+
+void DlListcreation();
+void DlLinsertNodeAtEnd(char ch);
+void displayDlList();
+
+int main()
+{
+    int n;
+    char ch1;
+    stnode = NULL;
+    ennode = NULL;
+    printf("\n\n Doubly Linked List : Insert new node at the end in a doubly linked list :\n");
+    printf("------------------------------------------------------------------------------\n");
+
+    DlListcreation();
+    printf(" Input data for the last node : ");
+    scanf("%c", &ch1);
+    DlLinsertNodeAtEnd(ch1);
+    displayDlList();
+    return 0;
+}
+
+void DlListcreation()
+{
+    int i, chr;
+    struct node *newnode;
+
+    if(3 >= 1)
+    {
+        stnode = (struct node *)malloc(sizeof(struct node));
+
+        if(stnode != NULL)
+        {
+            printf(" Input character for node 1 : "); // assigning data in the first node
+            scanf("%c", &chr);
+            getchar();
+            stnode->ch = chr;
+            stnode->preptr = NULL;
+            stnode->nextptr = NULL;
+            ennode = stnode;
+            for(i=2; i<=3; i++)
+            {
+                newnode = (struct node *)malloc(sizeof(struct node));
+                if(newnode != NULL)
+                {
+                    printf(" Input character for node %d : ", i);
+                    scanf("%c", &chr);
+
+                    getchar();
+                    newnode->ch = chr;
+                    newnode->preptr = ennode;
+                    newnode->nextptr = NULL;
+                    ennode->nextptr = newnode;
+                    ennode = newnode;
+                }
+                else
+                {
+                    printf(" Memory can not be allocated.");
+                    break;
+                }
+            }
+        }
+        else
+        {
+            printf(" Memory can not be allocated.");
+        }
+    }
+}
+
+void DlLinsertNodeAtEnd(char chr)
+{
+    struct node * newnode;
+
+    if(ennode == NULL)
+    {
+        printf(" No data found in the list!\n");
+    }
+    else
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        newnode->ch = chr;
+        newnode->nextptr = NULL;
+        newnode->preptr = ennode;
+        ennode->nextptr = newnode;
+        ennode = newnode;
+    }
+}
+
+void displayDlList()
+{
+    struct node * tmp;
+
+    if(stnode == NULL)
+    {
+        printf(" No data found in the List yet.");
+    }
+    else
+    {
+        tmp = stnode;
+        printf("\n After insertion in the last node the new linked list :\n");
+
+        while(tmp != NULL)
+        {
+            printf("%c   ",tmp->ch);
+            tmp = tmp->nextptr;
+        }
+    }
+}
