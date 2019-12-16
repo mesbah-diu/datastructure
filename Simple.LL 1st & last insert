@@ -1,0 +1,37 @@
+//Insert data in simple link list at first,last and any position
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *head,*temp,*newnode;  //globally declared
+
+
+//Insert at first
+void insertfrst()
+{
+    printf("Enter the data you want to add in the first:\n");
+    newnode=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&newnode->data);
+    newnode->next=head;
+    head=newnode;
+}
+
+//Insert at last
+void insertlast()
+{
+    printf("Enter the data you want to add in the last:\n");
+    newnode=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&newnode->data);
+    newnode->next=0;
+    temp->next=newnode;
+}
+
+int main()
+{
+    link();
+    //insertfrst();        //add your choice
+    //insertlast();
+    display();
+}
